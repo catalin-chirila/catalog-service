@@ -39,6 +39,9 @@ spec:
               value: testdata
             - name: SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI
               value: http://polar-keycloak/realms/PolarBookshop
+          volumeMounts:
+            - name: catalog-config-volume
+              mountPath: /workspace/config
           livenessProbe:
             httpGet:
               path: /actuator/health/liveness
@@ -51,3 +54,7 @@ spec:
               port: 9001
             initialDelaySeconds: 5
             periodSeconds: 15
+      volumes:
+        - name: catalog-config-volume
+          configMap:
+            name: catalog-config

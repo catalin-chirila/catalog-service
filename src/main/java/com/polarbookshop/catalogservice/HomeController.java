@@ -15,6 +15,8 @@ public class HomeController {
 
 	@GetMapping("/")
 	public String getGreeting() {
+
+		System.getenv("");
 		return polarProperties.getGreeting();
 	}
 
